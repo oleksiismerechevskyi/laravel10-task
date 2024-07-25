@@ -1,0 +1,151 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api documentation for test task",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "/api/v1"
+        }
+    ],
+    "paths": {
+        "/positions": {
+            "get": {
+                "tags": [
+                    "positions"
+                ],
+                "summary": "Get all positions",
+                "description": "Get all positions",
+                "operationId": "GetPositions",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Positions not found"
+                    }
+                }
+            }
+        },
+        "token": {
+            "get": {
+                "operationId": "e971fb028027639f205c52b8fb0db889",
+                "responses": {
+                    "200": {
+                        "description": "Returns a token for user registration"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Retrieve all users with pagination",
+                "description": "Retrieve all users with pagination",
+                "operationId": "Get all users",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Pagination page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Users per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "422": {
+                        "description": "Unprocessible Entity"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create a user",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "createUser",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/users/{$id}": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get a user by id",
+                "description": "Get a user by id",
+                "operationId": "getUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CreateUserRequest": {
+                "required": [
+                    "name",
+                    "email",
+                    "position_id",
+                    "password",
+                    "photo"
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "positions",
+            "description": "positions"
+        },
+        {
+            "name": "users",
+            "description": "users"
+        }
+    ]
+}
