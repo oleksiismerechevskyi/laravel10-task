@@ -3,10 +3,11 @@ namespace App\Repositories;
 
 use App\DTO\CreateUserDTO;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserRepository {
-    protected $user;
+    protected Model $user;
 
     public function __construct(User $user) {
         $this->user = $user;
@@ -27,6 +28,6 @@ class UserRepository {
     }
 
     public function getPagination(int $page, int $count) {
-        return $this->user->paginate($count, ['*'], 'page', $page);
+        return $this->user->orderByDesc('created_at')->paginate($count, ['*'], 'page', $page);
     }
 }
