@@ -28,9 +28,12 @@
                 }
             }
         },
-        "token": {
+        "/token": {
             "get": {
-                "operationId": "e971fb028027639f205c52b8fb0db889",
+                "tags": [
+                    "token"
+                ],
+                "operationId": "25a6e3e24be121fe5b2a630bc0b12dd2",
                 "responses": {
                     "200": {
                         "description": "Returns a token for user registration"
@@ -142,6 +145,10 @@
         {
             "name": "positions",
             "description": "positions"
+        },
+        {
+            "name": "token",
+            "description": "token"
         },
         {
             "name": "users",

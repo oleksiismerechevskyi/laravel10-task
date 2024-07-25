@@ -10,7 +10,8 @@ class TokenController extends Controller
 {
      /**
      * @OA\Get(
-     *     path="token",
+     *     path="/token",
+     *     tags={"token"},
      *     @OA\Response(response="200", description="Returns a token for user registration")
      * )
      */
